@@ -1,6 +1,6 @@
 #### Project Goal
 The goal of this project is to gain insight into vancouver's rental property market, this includes:
-* help follow rental property trends based on craiglist listings
+* follow rental property trends based on craiglist listings
 * help renters gain an understanding of what areas, are within their budget
 *with future goals*
 * find rental scams and report them
