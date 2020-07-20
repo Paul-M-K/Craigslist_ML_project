@@ -32,3 +32,5 @@ This plot shows the corrolations between several attributes.
 there are not too many strong corrolations, however, the corrolations may not by linear. So further investigation is neede 
 ![corr](https://user-images.githubusercontent.com/20325116/87895552-9a8a8e00-c9fa-11ea-9a83-dfce40526118.png)
 
+
+more things to come! I just need to think more about what I am doing, and how I should present the data.
