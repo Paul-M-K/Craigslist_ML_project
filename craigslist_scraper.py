@@ -1,4 +1,4 @@
-# this code was obtained by following https://github.com/vprusso/youtube_tutorials/blob/master/web_scraping_and_automation/selenium/craigstlist_scraper.py
+# I wrote this code using this as a reference https://github.com/vprusso/youtube_tutorials/blob/master/web_scraping_and_automation/selenium/craigstlist_scraper.py
 # import libraries that will be needed for this code.
 
 from selenium import webdriver
@@ -17,16 +17,17 @@ import pandas as pd
 
 # construct a class.
 class CraiglistScraper(object): # will hopefully make it esier to modify in the future
-    def __init__(self, location, max_price): # define constructor
+    def __init__(self, location, max_price, min_price): # define constructor
         self.location = location
         self.max_price = max_price
+        self.min_price = min_price
 
         #here we need to build the URL that we want to feed to the website
-        self.url = f"http://{location}.craigslist.org/search/van/apa?van/apa?availabilityMode=0&bundleDuplicates=1&&min_price=300&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates"
-        self.url_1 = f"http://{location}.craigslist.org/search/van/apa?van/apa?availabilityMode=0&bundleDuplicates=1&&min_price=300&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=120"
-        self.url_2 = f"http://{location}.craigslist.org/search/van/apa?van/apa?availabilityMode=0&bundleDuplicates=1&&min_price=300&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=240"
-        self.url_3 = f"http://{location}.craigslist.org/search/van/apa?van/apa?availabilityMode=0&bundleDuplicates=1&&min_price=300&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=360"
-        self.url_4 = f"http://{location}.craigslist.org/search/van/apa?van/apa?availabilityMode=0&bundleDuplicates=1&&min_price=300&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=480"
+        self.url = f"http://{location}.craigslist.org/search/apa?bundleDuplicates=1&min_price={min_price}&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates"
+        self.url_1 = f"http://{location}.craigslist.org/search/van/apa?bundleDuplicates=1&min_price={min_price}&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=120"
+        self.url_2 = f"http://{location}.craigslist.org/search/van/apa?bundleDuplicates=1&min_price={min_price}&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=240"
+        self.url_3 = f"http://{location}.craigslist.org/search/van/apa?bundleDuplicates=1&min_price={min_price}&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=360"
+        self.url_4 = f"http://{location}.craigslist.org/search/van/apa?bundleDuplicates=1&min_price={min_price}&max_price={max_price}&min_bathrooms=1&minSqft=100&availabilityMode=0&sale_date=all+dates&s=480"
 
         self.driver = webdriver.Firefox()                   # this will open up the web browser
         self.delay = 5                                      # delay to ensure that page will load 3s delay.
@@ -69,7 +70,8 @@ class CraiglistScraper(object): # will hopefully make it esier to modify in the 
                     for link_loc in soup_new.findAll("div",{"id": "map"}):
                         lat_list.append(float(link_loc["data-latitude"]))
                         long_list.append(float(link_loc["data-longitude"]))
-                        acc_list.append(int(link_loc["data-accuracy"]))
+                        if link_loc["data-accuracy"] != 'number':
+                            acc_list.append(int(link_loc["data-accuracy"]))
                     for link_loc in soup_new.findAll("span", {"class": "shared-line-bubble"}):
                         items = link_loc.text.split()
                         if len(items[0]) == 3:
@@ -100,19 +102,20 @@ class CraiglistScraper(object): # will hopefully make it esier to modify in the 
                         if len(items[0]) == 6:
                             sqft_list.append(int(items[0].replace('ft2','')))
 
-        return title_list, price_list, lat_list, long_list, acc_list, bed_list, bath_list, sqft_list
+        return lat_list, long_list, acc_list, bed_list, bath_list, sqft_list, price_list, title_list
 
     def quit(self):
         self.driver.close()
 
 location = "vancouver"
-max_price = "2000"
+max_price = "8000"
+min_price = "3501"
 
-scraper = CraiglistScraper(location, max_price)
+scraper = CraiglistScraper(location, max_price,min_price)
 scraper.load_craigslist_url()
 #scraper.extract_post_information()
-title, price, lat, long, acc, bed, bath, sqft = scraper.extract_post_information
+lat, long, acc, bed, bath, sqft, price, title = scraper.extract_post_information
 scraper.quit()
 
-df = pd.DataFrame(list(zip(title, price, lat, long, acc, bed, bath, sqft)))
-df.to_csv('craigslist_scraper.csv')
+df = pd.DataFrame(list(zip(lat, long, acc, bed, bath, sqft, price, title)))
+df.to_csv('craigslist_scraper_3501_8000.csv')
