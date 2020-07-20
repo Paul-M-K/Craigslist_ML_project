@@ -1,3 +1,11 @@
+
+#### Project Goal
+The goal of this project is to gain insight into vancouvers rental property market, this includes:
+* help follow rental property trends based on craiglist listings
+* help renters gain an understanding of what areas, are within their budget
+*with future goals*
+* find rental scams and report them
+
 #### Data Source
 The data is obtained from craigslist using the craigslist_scraper.py. I created this code following this tutorial. https://github.com/vprusso/youtube_tutorials/blob/master/web_scraping_and_automation/selenium/craigstlist_scraper.py 
 * I would like to improve craigslist_scraper.py in the following ways.
@@ -6,13 +14,6 @@ The data is obtained from craigslist using the craigslist_scraper.py. I created 
 
 #### Data Description
 The dataset is comprised of rental property information in vancouver. The data is Latitude, longitude, accuracy(of location), number of beds, number of baths, square footage, price of property and name of listing. 
-
-#### Project Goal
-The goal of this project is to gain insight into vancouvers rental property market, this includes:
-* help follow rental property trends based on craiglist listings
-* help renters gain an understanding of what areas, are within their budget
-*with future goals*
-* find rental scams and report them
 
 #### Plots
 
