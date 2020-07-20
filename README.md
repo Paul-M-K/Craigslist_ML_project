@@ -6,7 +6,7 @@ The goal of this project is to gain insight into vancouver's rental property mar
 * find rental scams and report them
 
 #### Data Source
-The data is obtained from craigslist using the craigslist_scraper.py. I created this code following this tutorial. https://github.com/vprusso/youtube_tutorials/blob/master/web_scraping_and_automation/selenium/craigstlist_scraper.py
+The data is obtained from craigslist using the craigslist_scraper.py I wrote. I created my code following this tutorial. https://github.com/vprusso/youtube_tutorials/blob/master/web_scraping_and_automation/selenium/craigstlist_scraper.py
 * I would like to improve craigslist_scraper.py in the following ways.
   * Make it possible to scrape all rental pricing automatically without manual manipulation.
   * Make the program scrape craigslist once a day to build the dataset.
