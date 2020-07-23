@@ -26,14 +26,15 @@ This plot shows the correlations between several attributes.
 ![corrolation_plot](https://user-images.githubusercontent.com/20325116/87895155-898d4d00-c9f9-11ea-918e-e5d82391304a.png)
 
 there are not too many strong correlations, however, the correlations may not be linear. So further investigation is needed
+
 ![corr](https://user-images.githubusercontent.com/20325116/87895552-9a8a8e00-c9fa-11ea-9a83-dfce40526118.png)
 
 The dataset is stratified to ensure there is no bias. The labels are removed from the data set for training. 
 
 Selecting the training model was done by comparing several different methods together by using cross validation using 10 folds for each model. The results were as followed:
-Linear regression: rmse 410.297 (mean) std: 15.974
-Decision TreeRegression: rmse 526.377 (mean), std: 25.397 
-RandomForestRegressor: rmse 389.414 (mean), std: 21.371
+* Linear regression: rmse 410.297 (mean) std: 15.974
+* Decision TreeRegression: rmse 526.377 (mean), std: 25.397 
+* RandomForestRegressor: rmse 389.414 (mean), std: 21.371
 
 RandomForestRegressor seems to be the most promising model for this dataset. Therefore I am performing a GridSearchCV to help to determine the optimal hyperparameters. It is determined that the max_features hyperparameter to be 4 and the n_estimators hyperparameter to be 30. This yields a rmse of 390.996. 
 
