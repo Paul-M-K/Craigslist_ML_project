@@ -17,12 +17,9 @@ The dataset consists of rental property information in vancouver. The data is La
 #### Plots
 
 Here is a plot of the location of properties (latitude vs longitude) along with a colour representation of the price. There are some places to take note. UBC (lat: 49.26, long: -123.25), yaletown (lat: 49.275 -123.125), coal harbour (lat: 49.29, long: -123.125)
-* improvement: I want to have an overlay of the vancouver map in the plot. I have done it, but i’ve messed up the scaling.
-
 ![housing_prices_scatterplot](https://user-images.githubusercontent.com/20325116/87889585-2eeaf580-c9e7-11ea-9ae2-f8350e439dd1.png)
 
-*issue with scaling*
-![vancouver_housing_prices_plot](https://user-images.githubusercontent.com/20325116/87895104-66fb3400-c9f9-11ea-8a0e-ef1cbad2cd5f.png)
+![vancouver_housing_prices_plot](https://user-images.githubusercontent.com/20325116/88244264-26ddc080-cc48-11ea-8721-7a785b1eee75.png)
 
 This plot shows the correlations between several attributes.
 
