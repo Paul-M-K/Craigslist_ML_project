@@ -28,5 +28,14 @@ This plot shows the correlations between several attributes.
 there are not too many strong correlations, however, the correlations may not be linear. So further investigation is needed
 ![corr](https://user-images.githubusercontent.com/20325116/87895552-9a8a8e00-c9fa-11ea-9a83-dfce40526118.png)
 
+The dataset is stratified to ensure there is no bias. The labels are removed from the data set for training. 
 
-more things to come! I just need to think more about what I am doing, and how I should present the data.
+Selecting the training model was done by comparing several different methods together by using cross validation using 10 folds for each model. The results were as followed:
+Linear regression: rmse 410.297 (mean) std: 15.974
+Decision TreeRegression: rmse 526.377 (mean), std: 25.397 
+RandomForestRegressor: rmse 389.414 (mean), std: 21.371
+
+RandomForestRegressor seems to be the most promising model for this dataset. Therefore I am performing a GridSearchCV to help to determine the optimal hyperparameters. It is determined that the max_features hyperparameter to be 4 and the n_estimators hyperparameter to be 30. This yields a rmse of 390.996. 
+
+I messed up the dataset. I should not be using the accuracy attribute because it is completly independant of all other attributes. I left it in there because eventually I want to use it as a weight factor for each listing.
+
