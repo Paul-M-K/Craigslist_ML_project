@@ -70,7 +70,7 @@ Modeling of rental property in Vancouver was done by using three techniques Line
 * Decision TreeRegression: rmse 518.825 (mean), std: 31.828
 * RandomForestRegressor: rmse 392.983 (mean), std: 22.034
 
-Fine turing the hyperparameters 'max_features': 6, 'n_estimators': 40 results in a rmse of 392.710 which is very close to the cross validation technique. 
+Fine turing the hyperparameters 'max_features': 6, 'n_estimators': 40 results in a rmse of 395.625 with a 95% condidence interval of [371.366, 418.482] which is very close to the cross validation technique. 
 
 Using these hyperparameters we compare training data vs testing data and the three plots in the results section show that the model we are using is able to accurately predict the price of the rental properties in Vancouver.
  
