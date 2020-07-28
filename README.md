@@ -1,6 +1,8 @@
 #### Project Goal
 The goal of this project is to gain insight into vancouver's rental property market, this includes:
+
 **Main objective**
+
 * Use machine learning to accurately predict the price of rental property based on attributes that can be extracted from craigslist.
 
 **Sub Objectives**
