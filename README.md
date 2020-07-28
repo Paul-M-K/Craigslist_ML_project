@@ -70,7 +70,7 @@ Modeling of rental property in Vancouver was done by using three techniques Line
 * Decision TreeRegression: rmse 518.825 (mean), std: 31.828
 * RandomForestRegressor: rmse 392.983 (mean), std: 22.034
 
-Fine turing the hyperparameters 'max_features': 6, 'n_estimators': 40 results in a rmse of 395.625 with a 95% condidence interval of [371.366, 418.482] which is very close to the cross validation technique. 
+Fine tuning the hyperparameters 'max_features': 8, 'n_estimators': 30 results in a rmse of 392.195. Using the test data with the RandomForestRegressor model and the above hyperparameters the rmse with the test data is 395.756 with a 95% condidence interval of [371.290, 418.796]. 
 
 Using these hyperparameters we compare training data vs testing data and the three plots in the results section show that the model we are using is able to accurately predict the price of the rental properties in Vancouver.
  
@@ -78,3 +78,4 @@ Using these hyperparameters we compare training data vs testing data and the thr
 
 From this point there are sub objectives that I have for this project. Such as determining scams, scraping data from craigslist periodically (online learning. I need to learn how to train models incrementally), and build an interactive site. At this moment I am not sure if I should build an interactive website or continue to learn different machine learning techniques. 
 
+Thank you for taking the time to read through my project. Stay safe out there during these unusual times. -Paul
