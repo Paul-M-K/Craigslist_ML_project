@@ -85,6 +85,10 @@ Using these hyperparameters we compare training data vs testing data and the thr
  
 #### Final remarks. 
 
-From this point there are sub objectives that I have for this project. Such as determining scams, scraping data from craigslist periodically (online learning. I need to learn how to train models incrementally), and build an interactive site. At this moment I am not sure if I should build an interactive website or continue to learn different machine learning techniques. 
+From this point there are sub objectives that I have for this project. Such as determining scams, scraping data from craigslist periodically (online learning. I need to learn how to train models incrementally), and build an interactive 
+
+site. At this moment I am not sure if I should build an interactive website or continue to learn different machine learning techniques. 
 
 Thank you for taking the time to read through my project. Stay safe out there during these unusual times. -Paul
+
+\pmb y = X \beta + \epsilon
