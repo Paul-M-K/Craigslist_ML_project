@@ -24,43 +24,52 @@ The dataset consists of rental property information in vancouver. The data is La
 
 #### Analysis
 
-Here is a plot of the location of properties (latitude vs longitude) along with a colour representation of the price. There are some places to take note. UBC (lat: 49.26, long: -123.25), yaletown (lat: 49.275 -123.125), coal harbour (lat: 49.29, long: -123.125)
+To gain a general understanding of the data we can plot the location of each rental property based on latitude vs longitude. The colour gradient on the right represents the price of each rental property. From this plot we can make out the shape of Vancouver with this plot alone. There are some places to take note. UBC (lat: 49.26, long: -123.25), yaletown (lat: 49.275 -123.125), coal harbour (lat: 49.29, long: -123.125) 
+
 ![housing_prices_scatterplot](https://user-images.githubusercontent.com/20325116/87889585-2eeaf580-c9e7-11ea-9ae2-f8350e439dd1.png)
+
+Here I have superimposed a map of Vancouver under the location data. We can see that the data and the map are very similar. Unfortunately it is very hard to align the map perfectly, so please bear with me.
 
 ![vancouver_housing_prices_plot](https://user-images.githubusercontent.com/20325116/88244264-26ddc080-cc48-11ea-8721-7a785b1eee75.png)
 
-This plot shows the correlations between several attributes.
+
+Determining the correlation of each attribute shows a fairly interesting picture. There are no strong correlations, however, there are trends in the positive direction for multiple attributes. However, not all correlations may be linear, therefore more investigation is needed.
 
 ![corrolation_plot](https://user-images.githubusercontent.com/20325116/87895155-898d4d00-c9f9-11ea-918e-e5d82391304a.png)
 
-there are not too many strong correlations, however, the correlations may not be linear. So further investigation is needed
+Here we can see at the numeric level how strongly each attributes corrolates to one another.
 
 ![corr](https://user-images.githubusercontent.com/20325116/87895552-9a8a8e00-c9fa-11ea-9a83-dfce40526118.png)
 
-The dataset is stratified to ensure there is no bias. The labels are removed from the data set for training. 
-
 #### Results
 
-Selecting the training model was done by comparing several different methods together by using cross validation using 10 folds for each model. The results were as followed:
-* Linear regression: rmse 410.587 (mean) std: 16.506
-* Decision TreeRegression: rmse 518.825 (mean), std: 31.828 
-* RandomForestRegressor: rmse 392.983 (mean), std: 22.034
+The multivariable data was separated stratified first to ensure there is no bias. The data was then split into training data and test data. When training started the label (price) was removed from the training set and the data was standardized. 
 
-RandomForestRegressor seems to be the most promising model for this dataset. Therefore I am performing a GridSearchCV to help to determine the optimal hyperparameters. It is determined that the max_features hyperparameter to be 6 and the n_estimators hyperparameter to be 40. This yields a rmse of 392.710. 
+The training data was passed through three different modelling techniques, Linear Regression, Decision TreeRegression, and RandomForestRegressor. To determine the optimal model for the training data I used cross validation with 10 folds to find the mean Root Mean Square Error (RMSE) for each technique.
 
-Using RansomForestRegressor we can use the train and test data to show how well the model is able to predict the price of a rental property based on attributes alone.
+![rmse](https://user-images.githubusercontent.com/20325116/88749591-79b3ee00-d108-11ea-94c9-ac454495389a.png)
+
+The resulting cross validation Mean RMSE are as follows:
+
+* Linear regression: RMSE 410.587 (mean) std: 16.506
+* Decision TreeRegression: RMSE 518.825 (mean), std: 31.828 
+* RandomForestRegressor: RMSE 392.983 (mean), std: 22.034
+
+The lowest Mean RMSE was determined to be RandomForestRegressor. To fine tune the hyperparameters a GridSearchCV was performed. The optimal hyperparameters were determined to 'max_features': 8, 'n_estimators': 30 resulting in a rmse of 392.195.
+
+Using the RandomForestRegressor model with hyperparameters we can pass the test dataset through this model and determine the predicted price for rental property in Vancouver. By comparing the predicted price (red circles) with the actual price (blue squares), we can see visually that the predicted values mimic the actual values very well. We can also determine the RMSE for the test data and this is 395.756 with a 95% confidence interval of [371.290, 418.796].
 
 ![sqrt_vs_price](https://user-images.githubusercontent.com/20325116/88725702-5b86c780-d0e1-11ea-8590-57d35b1d57f3.png)
 
-As you can see the model does a fairly good job at predicting the price of rental property with respect to square footage.
+This plot shows the square footage vs price for both the training data (Blue squares) and the test data (red circles). The test data prices are all predicted values that are created using the RandomForestRegressor model we have developed. 
 
 ![beds_vs_price](https://user-images.githubusercontent.com/20325116/88725794-8244fe00-d0e1-11ea-8fe1-b59895b5ff52.png)
 
-The model does a fairly good job at predicting the price with respect to the number of beds.
+This plot shows the number of beds vs price for both the training data (Blue squares) and the test data (red circles). The test data prices are all predicted values that are created using the RandomForestRegressor model we have developed. 
 
 ![Bath_vs_price](https://user-images.githubusercontent.com/20325116/88725864-9c7edc00-d0e1-11ea-9909-aa914934ef5e.png)
 
-The model does a fairly good job at predicting the price with respect to the number of bathrooms. 
+This plot shows the number of baths vs price for both the training data (Blue squares) and the test data (red circles). The test data prices are all predicted values that are created using the RandomForestRegressor model we have developed. 
 
 #### Conclusion
 
